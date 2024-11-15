@@ -1,0 +1,80 @@
+:root {
+    --bg-color: #f0f0f0;
+    --text-color: #333;
+    --card-bg: white;
+    --progress-bg: #ddd;
+}
+
+.dark-mode {
+    --bg-color: #333;
+    --text-color: #f0f0f0;
+    --card-bg: #444;
+    --progress-bg: #555;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--card-bg);
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.button-dark-mode {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-dark-mode:hover {
+    background-color: #45a049;
+}
+
+.content {
+    padding: 20px;
+}
+
+.card {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    height: 20px;
+    background-color: var(--progress-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.progress {
+    height: 100%;
+    background-color: #4CAF50;
+}
+
+.progress-label {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: var(--text-color);
+    font-weight: bold;
+}

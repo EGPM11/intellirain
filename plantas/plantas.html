@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantas</title>
+    <link rel="stylesheet" href="/nav.css">
+    <link rel="stylesheet" href="plantas.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-icon" onclick="window.location.href='/dash'">🏠</div>
+        <div class="sidebar-icon" onclick="window.location.href='/dash'">📊</div>
+        <div class="sidebar-icon" onclick="window.location.href='/plantas'">🌱</div>
+        <div class="sidebar-icon" onclick="alert('Settings')">⚙️</div>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <h1>Plantas</h1>
+            <button onclick="toggleDarkMode()">Dark Mode</button>
+        </div>
+        <div class="content" id="plant-content"></div>
+    </div>
+    <script src="/darkmode.js"></script>
+    <script src="/plantas/plantas.js"></script>
+</body>
+</html>

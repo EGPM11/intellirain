@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/nav.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-icon" onclick="window.location.href='/dash'">🏠</div>
+        <div class="sidebar-icon" onclick="window.location.href='/dash'">📊</div>
+        <div class="sidebar-icon" onclick="window.location.href='/plantas'">🌱</div>
+        <div class="sidebar-icon" onclick="alert('Settings')">⚙️</div>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <h1>IntelliRain Dashboard</h1>
+            <button class="button-dark-mode" onclick="toggleDarkMode()">Dark Mode</button>
+        </div>
+        <div class="content">
+            <p>Bienvenido al dashboard de IntelliRain</p>
+        </div>
+    </div>
+    <script src="/darkmode.js"></script>
+</body>
+</html>
