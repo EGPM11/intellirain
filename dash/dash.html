@@ -5,29 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="/nav.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 </head>
 <body>
     <div class="sidebar">
         <div class="sidebar-icon" onclick="window.location.href='/dash'">🏠</div>
         <div class="sidebar-icon" onclick="window.location.href='/dash'">📊</div>
         <div class="sidebar-icon" onclick="window.location.href='/plantas'">🌱</div>
-        <div class="sidebar-icon" onclick="alert('Settings')">⚙️</div>
+        <div class="sidebar-icon" onclick="toggleDarkMode()">🌙</div>
+
     </div>
 
     <div class="main-content">
         <header>
             <div class="header">
                 <h1>IntelliRain Dashboard</h1>
-                <button class="button-dark-mode" onclick="toggleDarkMode()">Dark Mode</button>
             </div>
         </header>
         <div class="content">
-            <p>Bienvenido al dashboard de IntelliRain</p>
+            <div class="cards-container">
+
+                <div class="card">
+                    <h2>Temperatura Actual</h2>
+                    <canvas id="tempChart"></canvas>
+                </div>
+                
+                <div class="card">
+                    <h2>Precipitación Semanal</h2>
+                    <canvas id="precipChart"></canvas>
+                </div>
+                
+                <div id="map" style="width: 100%; height: 300px;"></div>
+            </div>
         </div>
     </div>
-</body>
 
 
+    <script type="module" src="dash.js"></script>
     <script src="/darkmode.js"></script>
 </body>
 </html>
