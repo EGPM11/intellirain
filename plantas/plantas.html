@@ -12,83 +12,73 @@
         <div class="sidebar-icon" onclick="window.location.href='/dash'">🏠</div>
         <div class="sidebar-icon" onclick="window.location.href='/dash'">📊</div>
         <div class="sidebar-icon" onclick="window.location.href='/plantas'">🌱</div>
-        <div class="sidebar-icon" onclick="alert('Settings')">⚙️</div>
+        <div class="sidebar-icon" onclick="toggleDarkMode()">🌙</div>
     </div>
     <div class="main-content">
         <div class="header">
             <h1>Plantas</h1>
-            <button class="button-dark-mode" onclick="toggleDarkMode()">Dark Mode</button>
         </div>
         <div class="content">
-            <select id="country-select">
-                <option value="San Pedro de Macoris">San Pedro de Macoris</option>
-                <option value="New York">New York</option>
-                <option value="Tokyo">Tokyo</option>
-                <option value="London">London</option>
-                <option value="Paris">Paris</option>
-                <option value="Berlin">Berlin</option>
-                <option value="Mexico City">Mexico City</option>
-                <option value="Toronto">Toronto</option>
-                <option value="Buenos Aires">Buenos Aires</option>
-                <option value="Beijing">Beijing</option>
-                <option value="Seoul">Seoul</option>
-                <option value="Sydney">Sydney</option>
-                <option value="Cape Town">Cape Town</option>
-                <option value="Mumbai">Mumbai</option>
-                <option value="Bangkok">Bangkok</option>
-                <option value="Dubai">Dubai</option>
-                <option value="Singapore">Singapore</option>
-                <option value="Moscow">Moscow</option>
-                <option value="Madrid">Madrid</option>
-                <option value="Rome">Rome</option>
-                <option value="Cairo">Cairo</option>
-                <option value="Istanbul">Istanbul</option>
-                <option value="Rio de Janeiro">Rio de Janeiro</option>
-                <option value="Lima">Lima</option>
-                <option value="Kuala Lumpur">Kuala Lumpur</option>
-                <option value="Jakarta">Jakarta</option>
-                <option value="Los Angeles">Los Angeles</option>
-                <option value="Chicago">Chicago</option>
-                <option value="Houston">Houston</option>
-                <option value="Las Vegas">Las Vegas</option>
-            </select>
-            <button onclick="getWeather()">Get Weather</button>
             <div class="cards-container" id="cards-container">
                 <!-- Aquí se agregarán dinámicamente los botones de las plantas -->
+                </div>
             </div>
         </div>
     </div>
-
-    <script src="./darkmode.js"></script>
+    <script src="/darkmode.js"></script>
+    <script src="./plantas.js"></script>
+    
+    <!--Prueba de ltarjetas -->
     <script>
-        const apiKey = '500c2d60e968e7eb9ad2952773c2ad8d';
+        const plantas = [
+    { id: 1, name: 'Planta 1', icon: '🌱' },
+    { id: 2, name: 'Cactus', icon: '🌵' },
+    { id: 3, name: 'Planta 3', icon: '🌴' },
+    { id: 3, name: 'Planta 3', icon: '🌴' },
+    { id: 3, name: 'Planta 3', icon: '🌴' },
+    { id: 3, name: 'Planta 3', icon: '🌴' },
+    { id: 3, name: 'Planta 3', icon: '🌴' },
+    { id: 3, name: 'Planta 3', icon: '🌴' },
+    { id: 3, name: 'Planta 3', icon: '🌴' }
+];
 
-        function getWeather() {
-            const selectedCity = document.getElementById('country-select').value;
-            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${selectedCity}&appid=${apiKey}`)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                    displayWeather(data);
-                })
-                .catch(error => console.error('Error fetching weather data:', error));
-        }
+const cardsContainer = document.getElementById('cards-container');
 
-        function displayWeather(data) {
-            const cardsContainer = document.getElementById('cards-container');
-            cardsContainer.innerHTML = ''; // Limpiar contenido anterior
+function generarBotones() {
+    cardsContainer.innerHTML = '';
+    plantas.forEach(planta => {
+        const button = document.createElement('div');
+        button.className = 'name-button';
 
-            const weatherCard = document.createElement('div');
-            weatherCard.className = 'name-button';
-            weatherCard.innerHTML = `
-                <div class="icon">🌦️</div>
-                <div class="label">${data.name}</div>
-                <div>Temp: ${(data.main.temp - 273.15).toFixed(1)}°C</div>
-                <div>Humidity: ${data.main.humidity}%</div>
-                <div>Wind Speed: ${data.wind.speed} m/s</div>
-            `;
-            cardsContainer.appendChild(weatherCard);
-        }
+        const icon = document.createElement('div');
+        icon.className = 'icon';
+        icon.textContent = planta.icon;
+
+        const label = document.createElement('div');
+        label.className = 'label';
+        label.textContent = planta.name;
+
+        const bookmark = document.createElement('div');
+        bookmark.className = 'bookmark'; // Marcador
+        bookmark.addEventListener('click', (e) => {
+            e.stopPropagation(); // Evita que el clic en el marcador active la tarjeta
+            alert('Marcaste: ${planta.name}');
+        });
+
+        button.appendChild(icon);
+        button.appendChild(label);
+        button.appendChild(bookmark);
+
+        button.addEventListener('click', () => {
+            alert('Seleccionaste: ${planta.name}');
+        });
+
+        cardsContainer.appendChild(button);
+    });
+}
+
+generarBotones();
+
     </script>
 </body>
 </html>
