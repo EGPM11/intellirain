@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plantas</title>
-    <link rel="stylesheet" href="./nav.css">
+    <link rel="stylesheet" href="/public/nav.css">
     <link rel="stylesheet" href="./plantas.css">
 </head>
 <body>
@@ -17,6 +17,12 @@
     <div class="main-content">
         <div class="header">
             <h1>Plantas</h1>
+            <div style="margin-top: 20px;">
+                <input type="text" id="search-input" placeholder="Buscar por nombre, científico o familia" style="padding: 8px; width: 300px; border: 1px solid #ccc; border-radius: 4px;">
+                <button id="search-btn" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                    Buscar
+                </button>
+            </div>
         </div>
         <div class="content">
             <div class="cards-container" id="cards-container">
@@ -29,56 +35,5 @@
     <script src="./plantas.js"></script>
     
     <!--Prueba de ltarjetas -->
-    <script>
-        const plantas = [
-    { id: 1, name: 'Planta 1', icon: '🌱' },
-    { id: 2, name: 'Cactus', icon: '🌵' },
-    { id: 3, name: 'Planta 3', icon: '🌴' },
-    { id: 3, name: 'Planta 3', icon: '🌴' },
-    { id: 3, name: 'Planta 3', icon: '🌴' },
-    { id: 3, name: 'Planta 3', icon: '🌴' },
-    { id: 3, name: 'Planta 3', icon: '🌴' },
-    { id: 3, name: 'Planta 3', icon: '🌴' },
-    { id: 3, name: 'Planta 3', icon: '🌴' }
-];
-
-const cardsContainer = document.getElementById('cards-container');
-
-function generarBotones() {
-    cardsContainer.innerHTML = '';
-    plantas.forEach(planta => {
-        const button = document.createElement('div');
-        button.className = 'name-button';
-
-        const icon = document.createElement('div');
-        icon.className = 'icon';
-        icon.textContent = planta.icon;
-
-        const label = document.createElement('div');
-        label.className = 'label';
-        label.textContent = planta.name;
-
-        const bookmark = document.createElement('div');
-        bookmark.className = 'bookmark'; // Marcador
-        bookmark.addEventListener('click', (e) => {
-            e.stopPropagation(); // Evita que el clic en el marcador active la tarjeta
-            alert('Marcaste: ${planta.name}');
-        });
-
-        button.appendChild(icon);
-        button.appendChild(label);
-        button.appendChild(bookmark);
-
-        button.addEventListener('click', () => {
-            alert('Seleccionaste: ${planta.name}');
-        });
-
-        cardsContainer.appendChild(button);
-    });
-}
-
-generarBotones();
-
-    </script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+/* Variables de color: define colores para modo claro y oscuro */
 :root {
     --bg-color: #f0f0f0;
     --text-color: #333;
@@ -5,6 +6,7 @@
     --progress-bg: #ddd;
 }
 
+/* Variables para el modo oscuro */
 .dark-mode {
     --bg-color: #333;
     --text-color: #f0f0f0;
@@ -12,120 +14,7 @@
     --progress-bg: #555;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding: 20px;
-    background-color: var(--card-bg);
-}
-
-.header h1 {
-    margin: 0;
-}
-
-.button-dark-mode {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.button-dark-mode:hover {
-    background-color: #45a049;
-}
-
-.content {
-    padding: 20px;
-}
-
-.card {
-    background-color: var(--card-bg);
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-.progress-bar {
-    height: 20px;
-    background-color: var(--progress-bg);
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 10px;
-    position: relative;
-}
-
-.progress {
-    height: 100%;
-    background-color: #4CAF50;
-}
-
-.progress-label {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    color: var(--text-color);
-    font-weight: bold;
-}
-
-
-.sidebar-icon {
-    color: #fff; 
-    font-size: 24px; 
-    margin: 20px 0; 
-    cursor: pointer; 
-}
-
-.sidebar-icon:hover {
-    color: #4CAF50; 
-}
-
-.plant-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px;
-    border-bottom: 1px solid var(--progress-bg);
-}
-
-.plant-info {
-    display: flex;
-    align-items: center;
-}
-
-.plant-icon {
-    width: 40px;
-    height: 40px;
-    background-color: #ddd;
-    border-radius: 50%;
-    margin-right: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-}
-
-.plant-name {
-    font-weight: bold;
-    margin: 0;
-}
-
-:root {
-    --bg-color: #f0f0f0;
-    --text-color: #333;
-    --card-bg: #d3d3d3;
-}
-
+/* Estilo general del cuerpo */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -136,6 +25,7 @@ body {
     display: flex;
 }
 
+/* Estilos de la barra lateral */
 .sidebar {
     position: fixed;
     top: 0;
@@ -149,12 +39,25 @@ body {
     padding: 10px 0;
 }
 
+/* Iconos de la barra lateral */
+.sidebar-icon {
+    color: #fff;
+    font-size: 24px;
+    margin: 20px 0;
+    cursor: pointer;
+}
 
+.sidebar-icon:hover {
+    color: #4CAF50; /* Color verde al pasar el cursor */
+}
+
+/* Contenido principal */
 .main-content {
     margin-left: 80px;
     padding: 20px;
 }
 
+/* Encabezado principal */
 .header {
     display: flex;
     justify-content: space-between;
@@ -169,6 +72,7 @@ body {
     margin: 0;
 }
 
+/* Botón para cambiar al modo oscuro */
 .button-dark-mode {
     padding: 10px 20px;
     background-color: #4CAF50;
@@ -179,62 +83,58 @@ body {
 }
 
 .button-dark-mode:hover {
-    background-color: #45a049;
+    background-color: #45a049; /* Efecto hover para el botón */
 }
 
+/* Contenedor de tarjetas */
 .cards-container {
     display: grid;
-    grid-template-columns: repeat(6, minmax(150px, 1fr)); /* Ajusta el tamaño mínimo de las tarjetas */
-    gap: 50px; /* Espacio entre las tarjetas */
-    padding: 20px;
-    justify-content: center;
-    background-color: var(--bg-color);
-}
-
+    grid-template-columns: repeat(3, minmax(150px, 1fr)); /* Aumenta el tamaño mínimo */
+    gap: 60px;
+    padding: 50px;
+  }
+  
+  /* Tarjetas */
 .name-button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #d3d3d3; /* Color del fondo de las tarjetas */
+    justify-content: center;
+    background: radial-gradient( #65a30d, #65a30d); /* Degradado radial */
+    color: #ffffff; /* Color del texto */
     border: none;
-    border-radius: 8px;
-    padding: 12px;
+    border-radius: 12px; /* Bordes redondeados */
+    padding: 100px;
+    width: 70px; /* Ancho fijo */
+    height: 125px; /* Alto fijo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0); /* Sombra */
+    text-align: center; /* Centrar texto */
+    transition: transform 0.2s, background 0.3s, box-shadow 0.3s; /* Transición suave */
     cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
-    position: relative; /* Para posicionar elementos absolutos dentro de la tarjeta */
-    width: 100%; /* Ajusta al ancho de la celda */
-    aspect-ratio: 1; /* Hace que la tarjeta sea cuadrada */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .name-button:hover {
-    background-color: #c0c0c0;
-    transform: translateY(-5px); /* Efecto de elevación */
-}
-
-.name-button .icon {
-    font-size: 36px; /* Tamaño del icono */
-    color: #333;
-    margin-bottom: 8px;
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el cursor */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra más fuerte */
+    background: radial-gradient(circle, #0a3d16, #65a30d); /* Cambia el degradado en hover */
 }
 
 .name-button .label {
-    font-size: 14px;
-    color: #333;
+    font-size: 24px;
     font-weight: bold;
-    margin: 0;
-    text-align: center;
+    margin-top: 10px;
 }
 
-/* Estilo para el ícono de marcador */
-.name-button .bookmark {
-    position: absolute;
-    bottom: 8px; /* Posición en la esquina inferior izquierda */
-    right: 8px;
-    width: 20px;
-    height: 20px;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v18l8-5.333L20 22V4a2 2 0 0 0-2-2H6z"/></svg>'); /* Ícono marcador */
-    background-size: contain;
-    background-repeat: no-repeat;
-    cursor: pointer;
+.name-button .description {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8); /* Texto secundario con transparencia */
+    margin-top: 5px;
+}
+
+.plant-image {
+    width: 150px; /* Tamaño ajustado para el ícono o imagen */
+    height: 150px;
+    margin-bottom: 10px;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.8); /* Borde blanco alrededor de la imagen */
 }

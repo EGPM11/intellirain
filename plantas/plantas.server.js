@@ -1,40 +1,66 @@
 const express = require("express");
 const path = require("path");
-const axios = require("axios"); 
 const router = express.Router();
 
-const API_KEY = "d27d3c497accf42705b31ff0d50dec47"
-const BASE_URL = "https://api.openweathermap.org/data/2.5";
+// Simula una base de datos (deberías reemplazar esto con tu conexión real a la base de datos)
+const plants = [
+    {
+        id: 1,
+        common_name: "Rosa",
+        scientific_name: "Rosa rubiginosa",
+        family: "Rosaceae",
+        image_url: "https://via.placeholder.com/150",
+    },
+    {
+        id: 2,
+        common_name: "Cactus",
+        scientific_name: "Cactaceae",
+        family: "Cactaceae",
+        image_url: "https://via.placeholder.com/150",
+    },
+    {
+        id: 3,
+        common_name: "Tulipán",
+        scientific_name: "Tulipa",
+        family: "Liliaceae",
+        image_url: "https://via.placeholder.com/150",
+    },
+    {
+      id: 3,
+      common_name: "Tulipán",
+      scientific_name: "Tulipa",
+      family: "Liliaceae",
+      image_url: "https://via.placeholder.com/150",
+  },
+  {
+    id: 3,
+    common_name: "Tulipán",
+    scientific_name: "Tulipa",
+    family: "Liliaceae",
+    image_url: "https://via.placeholder.com/150",
+},
+];
 
-// Ruta principal para servir el HTML
+// Ruta para servir el HTML
 router.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "plantas.html"));
+    res.sendFile(path.join(__dirname, "plantas.html"));
 });
 
-// Nueva ruta para obtener datos climáticos
-router.get("/clima", async (req, res) => {
-  const { lat, lon } = req.query;
+// Ruta para devolver datos de plantas desde la base de datos
+router.get("/data", (req, res) => {
+    const { query } = req.query; // Filtrar por nombre, nombre científico o familia
 
-  if (!lat || !lon) {
-    return res.status(400).json({ error: "Latitud y longitud son requeridas." });
-  }
+    let filteredPlants = plants;
+    if (query) {
+        filteredPlants = plants.filter(
+            (plant) =>
+                plant.common_name.toLowerCase().includes(query.toLowerCase()) ||
+                plant.scientific_name.toLowerCase().includes(query.toLowerCase()) ||
+                plant.family.toLowerCase().includes(query.toLowerCase())
+        );
+    }
 
-  try {
-    const response = await axios.get(`${BASE_URL}/weather`, {
-      params: {
-        lat,
-        lon,
-        appid: API_KEY,
-        units: "metric",
-        lang: "es", 
-      },
-    });
-
-    res.json(response.data); 
-  } catch (error) {
-    console.error("Error al obtener el clima:", error);
-    res.status(500).json({ error: "Error al obtener los datos climáticos." });
-  }
+    res.json(filteredPlants);
 });
 
 module.exports = router;
