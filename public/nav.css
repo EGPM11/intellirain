@@ -70,7 +70,7 @@ body {
     margin: 0;
 }
 
-.button-dark-mode {
+#location-btn {
     padding: 8px 16px;
     background-color: #4CAF50;
     color: #fff;
@@ -79,7 +79,7 @@ body {
     cursor: pointer;
 }
 
-.button-dark-mode:hover {
+#location-btn:hover {
     background-color: #45a049;
 }
 
@@ -160,3 +160,25 @@ body {
     background-color: #d4edda;
     color: #155724;
 }
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Asegura el espaciado horizontal */
+    gap: 20px;
+}
+
+.card {
+    flex: 1; /* Permite que las tarjetas se expandan de manera uniforme */
+    max-width: calc(50% - 20px);
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+#map {
+    border-radius: 10px;
+    margin-top: 10px;
+}
+

@@ -6,51 +6,49 @@
     <title>Dashboard</title>
     <!-- CSS Stylesheets -->
     <link rel="stylesheet" href="/nav.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <!-- Chart.js Library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Leaflet.js Library -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 </head>
 <body>
     <!-- Sidebar navigation -->
     <div class="sidebar">
-        <div class="sidebar-icon" onclick="window.location.href='/dash'" aria-label="Dashboard Home">🏠</div>
-        <div class="sidebar-icon" onclick="window.location.href='/dash'" aria-label="Dashboard Stats">📊</div>
-        <div class="sidebar-icon" onclick="window.location.href='/plantas'" aria-label="Plant Details">🌱</div>
-        <div class="sidebar-icon" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">🌙</div>
+        <div class="sidebar-icon" onclick="window.location.href='/dash'">🏠</div>
+        <div class="sidebar-icon" onclick="window.location.href='/dash'">📊</div>
+        <div class="sidebar-icon" onclick="window.location.href='/plantas'">🌱</div>
+        <div class="sidebar-icon" onclick="toggleDarkMode()">🌙</div>
     </div>
 
     <!-- Main Content -->
     <div class="main-content">
-        <!-- Header Section -->
-        <header class="header">
-            <h1>IntelliRain Dashboard</h1>
+        <header>
+            <div class="header">
+                <h1>IntelliRain Dashboard</h1>
+                <button id="location-btn">Detectar ubicacion</button>
+            </div>
         </header>
 
         <!-- Content Section -->
         <div class="content">
-            <!-- Cards Container -->
             <div class="cards-container">
-                <!-- Temperature Card -->
+
                 <div class="card">
                     <h2>Temperatura Actual</h2>
                     <canvas id="tempChart"></canvas>
                 </div>
                 
-                <!-- Precipitation Card -->
                 <div class="card">
                     <h2>Precipitación Semanal</h2>
                     <canvas id="precipChart"></canvas>
                 </div>
+                
+                <div id="map" style="width: 100%; height: 300px;"></div>
             </div>
-
-            <!-- Map Section -->
-            <div id="map" class="map-container" style="width: 100%; height: 300px;"></div>
         </div>
     </div>
 
-    <!-- JavaScript -->
+
     <script type="module" src="dash.js"></script>
     <script src="/darkmode.js"></script>
 </body>
