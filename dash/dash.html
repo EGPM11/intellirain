@@ -18,31 +18,58 @@
         <div class="sidebar-icon" onclick="toggleDarkMode()">🌙</div>
     </div>
 
+    <!-- Contenido principal -->
     <div class="main-content">
-        <header>
-            <div class="header">
-                <h1>IntelliRain Dashboard</h1>
-                <button id="location-btn">Detectar ubicacion</button>
-            </div>
+        <!-- Encabezado -->
+        <header class="header">
+            <h1>IntelliRain Dashboard</h1>
+            <button id="location-btn">Detectar ubicación</button>
         </header>
-        <div class="content">
-            <div class="cards-container">
 
-                <div class="card">
-                    <h2>Temperatura Actual</h2>
-                    <canvas id="tempChart"></canvas>
-                </div>
-                
-                <div class="card">
-                    <h2>Precipitación Semanal</h2>
-                    <canvas id="precipChart"></canvas>
-                </div>
-                
+        <!-- Indicadores clave -->
+        <div class="key-indicators">
+            <div class="indicator">
+                <h3>Temperatura</h3>
+                <p id="temperature">--°C</p>
+            </div>
+            <div class="indicator">
+                <h3>Humedad</h3>
+                <p id="humidity">--%</p>
+            </div>
+            <div class="indicator">
+                <h3>Presión</h3>
+                <p id="pressure">-- hPa</p>
+            </div>
+            <div class="indicator">
+                <h3>Viento</h3>
+                <p id="wind">-- km/h</p>
+            </div>
+        </div>
+
+        <!-- Secciones de gráficos y mapas -->
+        <div class="cards-container">
+            <div class="card">
+                <h2>Temperatura Actual</h2>
+                <canvas id="tempChart"></canvas>
+            </div>
+            <div class="card">
+                <h2>Precipitación Semanal</h2>
+                <canvas id="precipChart"></canvas>
+            </div>
+            <div class="card">
+                <h2>Ubicación Actual</h2>
                 <div id="map" style="width: 100%; height: 300px;"></div>
             </div>
         </div>
-    </div>
 
+        <!-- Alertas climáticas -->
+        <div class="alerts-section">
+            <h2>Alertas Climáticas</h2>
+            <div class="alert">
+                <p id="alert">⚠️ Posibilidad de tormentas eléctricas en tu área.</p>
+            </div>
+        </div>
+    </div>
 
     <script type="module" src="dash.js"></script>
     <script src="/darkmode.js"></script>
