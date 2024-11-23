@@ -8,15 +8,15 @@
 
 /* Variables para el modo oscuro */
 .dark-mode {
-    --bg-color: #333;
-    --text-color: #f0f0f0;
-    --card-bg: #444;
-    --progress-bg: #555;
+    --bg-color: #222; /* Fondo general más oscuro */
+    --text-color: #f0f0f0; /* Texto claro */
+    --card-bg: #333; /* Fondo de tarjetas oscuro */
+    --progress-bg: #444; /* Fondo de barras de progreso */
 }
 
 /* Estilo general del cuerpo */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif; /* Tipografía más moderna */
     margin: 0;
     padding: 0;
     background-color: var(--bg-color);
@@ -32,23 +32,26 @@ body {
     left: 0;
     width: 60px;
     height: 100vh;
-    background-color: #333;
+    background-color: var(--card-bg); /* Fondo cambia según el modo */
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 10px 0;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
 }
 
 /* Iconos de la barra lateral */
 .sidebar-icon {
-    color: #fff;
-    font-size: 24px;
+    color: var(--text-color);
+    font-size: 28px; /* Tamaño ligeramente mayor */
     margin: 20px 0;
     cursor: pointer;
+    transition: color 0.3s, transform 0.3s; /* Transición suave */
 }
 
 .sidebar-icon:hover {
     color: #4CAF50; /* Color verde al pasar el cursor */
+    transform: scale(1.2); /* Aumenta ligeramente el tamaño */
 }
 
 /* Contenido principal */
@@ -63,60 +66,84 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: var(--card-bg);
+    background-color: #4CAF50; /* Fondo verde */
+    color: var(--text-color); /* Texto dinámico */
     border-radius: 10px;
     margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
 }
 
 .header h1 {
     margin: 0;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
-/* Botón para cambiar al modo oscuro */
-.button-dark-mode {
-    padding: 10px 20px;
+.header input {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.header input:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5); /* Efecto al seleccionar */
+}
+
+.header button {
+    padding: 8px 16px;
+    background-color: #fff;
+    color: #4CAF50;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.header button:hover {
     background-color: #4CAF50;
     color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.button-dark-mode:hover {
-    background-color: #45a049; /* Efecto hover para el botón */
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño */
 }
 
 /* Contenedor de tarjetas */
 .cards-container {
     display: grid;
-    grid-template-columns: repeat(3, minmax(150px, 1fr)); /* Aumenta el tamaño mínimo */
-    gap: 60px;
-    padding: 50px;
-  }
-  
-  /* Tarjetas */
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+    gap: 40px;
+    padding: 30px;
+    background-color: var(--bg-color); /* Fondo claro */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para separar del fondo */
+}
+
+/* Tarjetas */
 .name-button {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: radial-gradient( #65a30d, #65a30d); /* Degradado radial */
-    color: #ffffff; /* Color del texto */
+    background: linear-gradient(145deg, #0c660c, #40a640); /* Degradado */
+    color: #ffffff; /* Texto blanco */
     border: none;
-    border-radius: 12px; /* Bordes redondeados */
-    padding: 100px;
-    width: 70px; /* Ancho fijo */
-    height: 125px; /* Alto fijo */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0); /* Sombra */
-    text-align: center; /* Centrar texto */
-    transition: transform 0.2s, background 0.3s, box-shadow 0.3s; /* Transición suave */
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Sombra */
+    transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
     cursor: pointer;
 }
 
 .name-button:hover {
     transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el cursor */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra más fuerte */
-    background: radial-gradient(circle, #0a3d16, #65a30d); /* Cambia el degradado en hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Sombra más fuerte */
+    background: linear-gradient(145deg, #057305, #38a138); /* Cambia el degradado en hover */
 }
 
 .name-button .label {
@@ -131,10 +158,62 @@ body {
     margin-top: 5px;
 }
 
+/* Imagen de la planta */
 .plant-image {
-    width: 150px; /* Tamaño ajustado para el ícono o imagen */
+    width: 150px;
     height: 150px;
     margin-bottom: 10px;
     object-fit: cover;
-    border: 2px solid rgba(255, 255, 255, 0.8); /* Borde blanco alrededor de la imagen */
+    border: 3px solid rgba(255, 255, 255, 0.9); /* Borde blanco */
+    border-radius: 8px;
+}
+
+/* Efecto sutil al cargar */
+.name-button {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos del input y botón de búsqueda */
+/* Estilos del input y botón de búsqueda */
+#search-input {
+    width: 300px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    transition: all 0.3s;
+    background-color: var(--card-bg); /* Fondo dinámico según el modo */
+    color: var(--text-color); /* Color del texto dinámico según el modo */
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+    color: var(--text-color); /* Asegurar color correcto en modo oscuro */
+}
+
+
+#search-btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#search-btn:hover {
+    background-color: #3e8e41;
+    transform: scale(1.1);
 }

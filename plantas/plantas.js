@@ -53,9 +53,15 @@ document.addEventListener("DOMContentLoaded", () => {
     // Cargar las tarjetas al iniciar la página
     updateCards();
 
-    // Escuchar el evento de búsqueda
+    // Escuchar el evento de búsqueda en tiempo real
+    searchInput.addEventListener("input", () => {
+        const query = searchInput.value.trim(); // Obtiene el texto ingresado
+        updateCards(query); // Actualiza las tarjetas dinámicamente
+    });
+
+    // También conserva el comportamiento del botón de búsqueda
     searchBtn.addEventListener("click", () => {
-        const query = searchInput.value.trim();
-        updateCards(query);
+        const query = searchInput.value.trim(); // Obtiene el texto ingresado
+        updateCards(query); // Actualiza las tarjetas al hacer clic
     });
 });
