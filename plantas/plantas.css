@@ -32,27 +32,34 @@ body {
     left: 0;
     width: 60px;
     height: 100vh;
-    background-color: var(--card-bg); /* Fondo cambia según el modo */
+    background-color: var(--bg-color); /* Asegúrate de usar la variable dinámica */
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 10px 0;
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s; /* Transición suave al cambiar entre modos */
 }
 
 /* Iconos de la barra lateral */
 .sidebar-icon {
     color: var(--text-color);
-    font-size: 28px; /* Tamaño ligeramente mayor */
+    font-size: 28px;
     margin: 20px 0;
     cursor: pointer;
-    transition: color 0.3s, transform 0.3s; /* Transición suave */
+    transition: color 0.3s, transform 0.3s;
 }
 
 .sidebar-icon:hover {
-    color: #4CAF50; /* Color verde al pasar el cursor */
-    transform: scale(1.2); /* Aumenta ligeramente el tamaño */
+    color: #4CAF50;
+    transform: scale(1.2);
 }
+
+/* Variables para el modo oscuro */
+.dark-mode .sidebar {
+    background-color: var(--card-bg); /* Fondo más oscuro en modo oscuro */
+}
+
 
 /* Contenido principal */
 .main-content {
@@ -168,6 +175,13 @@ body {
     border-radius: 8px;
 }
 
+@media (max-width:500px) {
+    .plant-image {
+        width: 100px;
+        height: 100px;
+    }
+}
+
 /* Efecto sutil al cargar */
 .name-button {
     opacity: 0;
@@ -183,7 +197,6 @@ body {
 }
 
 /* Estilos del input y botón de búsqueda */
-/* Estilos del input y botón de búsqueda */
 #search-input {
     width: 300px;
     padding: 10px;
@@ -192,6 +205,7 @@ body {
     transition: all 0.3s;
     background-color: var(--card-bg); /* Fondo dinámico según el modo */
     color: var(--text-color); /* Color del texto dinámico según el modo */
+    font-weight: 550;
 }
 
 #search-input:focus {
@@ -201,21 +215,26 @@ body {
     color: var(--text-color); /* Asegurar color correcto en modo oscuro */
 }
 
+/*Color de las letras dentro de la barra de busqueda*/
+#search-input::placeholder{
+    color:black;
+}
 
+.dark-mode #search-input::placeholder{
+    color: greenyellow;
+}
+
+/*Boton de busqueda*/
 #search-btn {
     padding: 10px 20px;
     border-radius: 8px;
     background-color: #4CAF50;
     color: white;
-    border: none;
+    border: 2px solid white;
     font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
-}
-
-#search-btn:hover {
-    background-color: #3e8e41;
-    transform: scale(1.1);
+    
 }
 
 /* Ocultar por defecto */
@@ -293,3 +312,4 @@ body {
     transform: scale(0.98);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
