@@ -2,6 +2,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const cardsContainer = document.getElementById("cards-container");
     const searchInput = document.getElementById("search-input");
     const searchBtn = document.getElementById("search-btn");
+    const popup = document.getElementById("popup");
+    const overlay = document.getElementById("overlay");
+    const closePopup = document.getElementById("close-popup");
+    const savePlantBtn = document.getElementById("save-plant-btn");
+    const popupTitle = document.getElementById("popup-title");
+    const popupDescription = document.getElementById("popup-description");
+    const popupDetails = document.getElementById("popup-details");
 
     // Función para obtener datos desde el backend
     const fetchDataFromDatabase = async (query = "") => {
@@ -20,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Función para renderizar las tarjetas
     const renderPlants = (plants) => {
-        cardsContainer.innerHTML = ""; // Limpia las tarjetas anteriores
+        cardsContainer.innerHTML = ""; // Limpia las tarjetas previas
 
         if (plants.length === 0) {
             cardsContainer.innerHTML = "<p>No se encontraron plantas.</p>";
@@ -40,8 +47,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="scientific-name">${plant.scientific_name || "Nombre científico no disponible"}</div>
                 <div class="family">Familia: ${plant.family || "No disponible"}</div>
             `;
+            card.addEventListener("click", () => openPopup(plant));
             cardsContainer.appendChild(card);
         });
+    };
+
+    // Función para abrir la ventana emergente
+    const openPopup = (plant) => {
+        popupTitle.textContent = plant.common_name || "Nombre no disponible";
+        popupDescription.textContent = `Nombre científico: ${plant.scientific_name || "No disponible"}`;
+        popupDetails.textContent = `Familia: ${plant.family || "No disponible"}`;
+        
+        // Mostrar popup y overlay
+        popup.classList.add("active");
+        overlay.classList.add("active");
+    };
+
+    // Función para cerrar la ventana emergente
+    const closePopupHandler = () => {
+        popup.classList.remove("active");
+        overlay.classList.remove("active");
     };
 
     // Función para actualizar las tarjetas dinámicamente
@@ -49,6 +74,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const plants = await fetchDataFromDatabase(query);
         renderPlants(plants);
     };
+
+    // Eventos de interacción
+    closePopup.addEventListener("click", closePopupHandler);
+    overlay.addEventListener("click", closePopupHandler);
+
+    savePlantBtn.addEventListener("click", () => {
+        alert("Se ha guardado la planta");
+    });
 
     // Cargar las tarjetas al iniciar la página
     updateCards();
