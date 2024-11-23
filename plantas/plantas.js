@@ -81,6 +81,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     savePlantBtn.addEventListener("click", () => {
         alert("Se ha guardado la planta");
+        // Esperamos a que el usuario acepte el alert y luego cerramos el popup
+        setTimeout(closePopupHandler, 0);
     });
 
     // Cargar las tarjetas al iniciar la página
