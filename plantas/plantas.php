@@ -71,7 +71,6 @@
     if ($conn->connect_error) {
         die("<p style='color: red;'>Error de conexión: " . $conn->connect_error . "</p>");
     }
-    echo "<p style='color: green;'>Conexión exitosa a la base de datos.</p>";
 
     // Cerrar conexión
     $conn->close();

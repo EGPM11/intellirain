@@ -3,7 +3,7 @@ const path = require("path");
 const router = express.Router();
 
 // Simula una base de datos (deberías reemplazar esto con tu conexión real a la base de datos)
-const plants = [
+/*const plants = [
     {
         id: 1,
         common_name: "Rosa",
@@ -25,21 +25,7 @@ const plants = [
         family: "Liliaceae",
         image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDbZyeGjfGPFMvouVISzMu8TveixeSDOudzA&s",
     },
-    {
-      id: 3,
-      common_name: "Tulipán",
-      scientific_name: "Tulipa",
-      family: "Liliaceae",
-      image_url: "https://via.placeholder.com/150",
-  },
-  {
-    id: 3,
-    common_name: "Tulipán",
-    scientific_name: "Tulipa",
-    family: "Liliaceae",
-    image_url: "https://via.placeholder.com/150",
-},
-];
+];*/
 
 // Ruta para servir el HTML
 router.get("/", (req, res) => {

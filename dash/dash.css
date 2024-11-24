@@ -5,8 +5,9 @@
     --card-bg: white;
     --progress-bg: #ddd;
     --primary-color: #4CAF50;
-    --alert-bg: #fff3cd;
-    --alert-text: #856404;
+    --hover-color: #45a049;
+    --sidebar-bg: #333;
+    --sidebar-hover: #4CAF50;
 }
 
 /* Dark Mode */
@@ -15,7 +16,8 @@
     --text-color: #f0f0f0;
     --card-bg: #444;
     --progress-bg: #555;
-    --primary-color: #81C784;
+    --sidebar-bg: #444;
+    --sidebar-hover: #4CAF50;
 }
 
 /* Global Styles */
@@ -28,32 +30,6 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 60px;
-    height: 100vh;
-    background-color: var(--card-bg);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar-icon {
-    margin: 20px 0;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-/* Main Content */
-.main-content {
-    margin-left: 80px;
-    padding: 20px;
-}
-
 /* Header */
 .header {
     display: flex;
@@ -61,69 +37,122 @@ body {
     align-items: center;
     margin-bottom: 20px;
     background-color: var(--card-bg);
-    padding: 10px;
-    border-radius: 8px;
+    border-bottom: 2px solid #f0f0f0;
+    transition: background-color 0.3s;
 }
 
-/* Indicadores clave */
-.key-indicators {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+.header h1 {
+    margin: 0;
+    font-size: 24px;
 }
 
-.indicator {
-    flex: 1;
-    margin: 0 10px;
-    background-color: var(--card-bg);
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
+.button-dark-mode {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.indicator h3 {
-    margin: 0 0 10px;
-    font-size: 16px;
-    color: var(--primary-color);
+.button-dark-mode:hover {
+    background-color: var(--hover-color);
 }
 
-/* Gráficos y Mapas */
-.cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+/* Main content */
+.content {
+    padding: 20px;
 }
 
+/* Card */
 .card {
     background-color: var(--card-bg);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-/* Alertas */
-.alerts-section {
-    margin-top: 30px;
+.card:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-.alert {
-    background-color: var(--alert-bg);
-    color: var(--alert-text);
-    padding: 15px;
-    border-radius: 8px;
+/* Progress bar */
+.progress-bar {
+    height: 20px;
+    background-color: var(--progress-bg);
+    border-radius: 10px;
+    overflow: hidden;
     margin-bottom: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-body.dark-mode {
-    background-color: #121212;
-    color: #ffffff;
+    position: relative;
+    transition: background-color 0.3s;
 }
 
-body.dark-mode .chart-container {
-    background-color: #1e1e1e;
-    border-color: #333333;
+.progress {
+    height: 100%;
+    background-color: var(--primary-color);
+    transition: width 0.5s ease;
 }
 
-body.dark-mode #map {
-    filter: brightness(0.8);
+.progress-label {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 60px;
+    background-color: var(--sidebar-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.sidebar-icon {
+    color: #fff;
+    font-size: 24px;
+    margin: 20px 0;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.sidebar-icon:hover {
+    color: var(--sidebar-hover);
+}
+
+/* Canvas for charts */
+canvas {
+    max-width: 100%;
+    height: 300px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    .header h1 {
+        font-size: 20px;
+    }
+
+    .button-dark-mode {
+        padding: 8px 16px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .progress-bar {
+        height: 18px;
+    }
 }
