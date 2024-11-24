@@ -1,0 +1,138 @@
+/* Variables de color */
+:root {
+    --bg-color: #f0f0f0;
+    --text-color: #333;
+    --card-bg: white;
+    --progress-bg: #ddd;
+    --primary-color: #4CAF50;
+    --alert-bg: #fff3cd;
+    --alert-text: #856404;
+}
+
+/* Dark Mode */
+.dark-mode {
+    --bg-color: #333;
+    --text-color: #f0f0f0;
+    --card-bg: #444;
+    --progress-bg: #555;
+    --primary-color: #81C784;
+}
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 100vh;
+    background-color: var(--card-bg);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-icon {
+    margin: 20px 0;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 80px;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: var(--card-bg);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* Indicadores clave */
+.key-indicators {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.indicator {
+    flex: 1;
+    margin: 0 10px;
+    background-color: var(--card-bg);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.indicator h3 {
+    margin: 0 0 10px;
+    font-size: 16px;
+    color: var(--primary-color);
+}
+
+/* Gráficos y Mapas */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Alertas */
+.alerts-section {
+    margin-top: 30px;
+}
+
+.alert {
+    background-color: var(--alert-bg);
+    color: var(--alert-text);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode .chart-container {
+    background-color: #1e1e1e;
+    border-color: #333333;
+}
+
+body.dark-mode #map {
+    filter: brightness(0.8);
+}
+#location-btn {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+

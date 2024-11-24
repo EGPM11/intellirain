@@ -3,16 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <!-- CSS Stylesheets -->
-    <link rel="stylesheet" href="/nav.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Recomendaciones Agrícolas</title>
+    <link rel="stylesheet" href="/recomendaciones/recomendaciones.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
 </head>
 <body>
-    <!-- Sidebar navigation -->
+    <!-- Sidebar -->
     <div class="sidebar">
         <div class="sidebar-icon" onclick="window.location.href='/dash'">🏠</div>
         <div class="sidebar-icon" onclick="window.location.href='/recomendaciones'">📊</div>
@@ -20,15 +17,14 @@
         <div class="sidebar-icon" onclick="toggleDarkMode()">🌙</div>
     </div>
 
-    <!-- Contenido principal -->
+    <!-- Main Content -->
     <div class="main-content">
-        <!-- Encabezado -->
         <header class="header">
-            <h1>IntelliRain Dashboard</h1>
-            <button id="location-btn">Detectar ubicación</button>
+            <h1>Recomendaciones Agrícolas</h1>
+            <button id="location-btn">Detectar Ubicación</button>
         </header>
 
-        <!-- Indicadores clave -->
+        <!-- Indicadores climáticos -->
         <div class="key-indicators">
             <div class="indicator">
                 <h3>Temperatura</h3>
@@ -39,41 +35,26 @@
                 <p id="humidity">--%</p>
             </div>
             <div class="indicator">
-                <h3>Presión</h3>
-                <p id="pressure">-- hPa</p>
-            </div>
-            <div class="indicator">
                 <h3>Viento</h3>
                 <p id="wind">-- km/h</p>
             </div>
         </div>
 
-        <!-- Secciones de gráficos y mapas -->
+        <!-- Mapa y Recomendaciones -->
         <div class="cards-container">
             <div class="card">
-                <h2>Temperatura Actual</h2>
-                <canvas id="tempChart"></canvas>
-            </div>
-            <div class="card">
-                <h2>Precipitación Semanal</h2>
-                <canvas id="precipChart"></canvas>
-            </div>
-            <div class="card">
-                <h2>Ubicación Actual</h2>
+                <h2>Ubicación y Clima</h2>
                 <div id="map" style="width: 100%; height: 300px;"></div>
             </div>
-        </div>
-
-        <!-- Alertas climáticas -->
-        <div class="alerts-section">
-            <h2>Alertas Climáticas</h2>
-            <div class="alert">
-                <p id="alert">⚠️ Posibilidad de tormentas eléctricas en tu área.</p>
+            <div class="card">
+                <h2>Recomendaciones</h2>
+                <div id="recommendations">
+                    Haz clic en "Detectar Ubicación" para recibir recomendaciones personalizadas.
+                </div>
             </div>
         </div>
     </div>
 
-    <script type="module" src="dash.js"></script>
-    <script src="/darkmode.js"></script>
+    <script src="recomendaciones.js"></script>
 </body>
 </html>

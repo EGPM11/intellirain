@@ -99,4 +99,4 @@ document.addEventListener("DOMContentLoaded", () => {
         const query = searchInput.value.trim(); // Obtiene el texto ingresado
         updateCards(query); // Actualiza las tarjetas al hacer clic
     });
-});
+}); 
