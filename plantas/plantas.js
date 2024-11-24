@@ -39,8 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
             card.className = "name-button";
             card.innerHTML = `
                 <img 
-                    src="${plant.image_url || "https://via.placeholder.com/150"}" 
-                    alt="${plant.common_name || "Sin imagen disponible"}" 
+                    src="/imagenes/Logo.jfif" 
                     class="plant-image"
                 >
                 <div class="label">${plant.common_name || "Nombre no disponible"}</div>
@@ -54,7 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Función para abrir la ventana emergente
     const openPopup = (plant) => {
-        popupTitle.textContent = plant.common_name || "Nombre no disponible";
+        popupTitle.textContent = plant.common_name|| "Nombre no disponible";
+        
         popupDescription.textContent = `Nombre científico: ${plant.scientific_name || "No disponible"}`;
         popupDetails.textContent = `Familia: ${plant.family || "No disponible"}`;
         
@@ -80,8 +80,25 @@ document.addEventListener("DOMContentLoaded", () => {
     overlay.addEventListener("click", closePopupHandler);
 
     savePlantBtn.addEventListener("click", () => {
-        alert("Se ha guardado la planta");
-        // Esperamos a que el usuario acepte el alert y luego cerramos el popup
+        // Obtener la información de la planta seleccionada
+        const plant = {
+            common_name: popupTitle.textContent || "Nombre no disponible",
+            scientific_name: popupDescription.textContent.split(": ")[1] || "No disponible",
+            family: popupDetails.textContent.split(": ")[1] || "No disponible"
+        };
+    
+        // Recuperar las recomendaciones existentes del localStorage
+        const recommendations = JSON.parse(localStorage.getItem("recommendations")) || [];
+    
+        // Agregar la nueva planta a las recomendaciones
+        recommendations.push(plant);
+    
+        // Guardar las recomendaciones actualizadas en localStorage
+        localStorage.setItem("recommendations", JSON.stringify(recommendations));
+    
+        alert("Se ha guardado la planta en recomendaciones");
+    
+        // Cerrar el popup
         setTimeout(closePopupHandler, 0);
     });
 

@@ -7,10 +7,10 @@ const router = express.Router();
 
 // Configuración de conexión a la base de datos
 const db = mysql.createConnection({
-    host: "localhost", // Cambiar según tu configuración
-    user: "root", // Usuario de MySQL
-    password: "", // Contraseña de MySQL
-    database: "plantasdb", // Nombre de tu base de datos
+    host: "localhost",
+    user: "root",
+    password: "Martinez2709",
+    database: "plantasdb",
 });
 
 // Verificar la conexión
@@ -29,14 +29,15 @@ router.get("/", (req, res) => {
 
 // Ruta para devolver datos de plantas desde la base de datos
 router.get("/data", (req, res) => {
-    const { query } = req.query; // Filtrar por nombre, nombre científico o familia
+    const { query } = req.query;
 
     let sql = "SELECT * FROM plantas";
-    if (query) {
-        sql += " WHERE common_name LIKE ? OR scientific_name LIKE ? OR family LIKE ?";
-    }
+    const params = [];
 
-    const params = query ? [`%${query}%`, `%${query}%`, `%${query}%`] : [];
+    if (query) {
+        sql += " WHERE nombre_comun LIKE ? OR nombre_cientifico LIKE ? OR tipo LIKE ?";
+        params.push(`%${query}%`, `%${query}%`, `%${query}%`);
+    }
 
     db.query(sql, params, (err, results) => {
         if (err) {
@@ -44,7 +45,16 @@ router.get("/data", (req, res) => {
             res.status(500).json({ error: "Error al obtener datos." });
             return;
         }
-        res.json(results);
+
+        // Mapear los resultados para usar nombres consistentes
+        const mappedResults = results.map((plant) => ({
+            common_name: plant.nombre_comun,
+            scientific_name: plant.nombre_cientifico,
+            family: plant.tipo,
+            image_url: plant.imagen_url || "https://via.placeholder.com/150", // Imagen por defecto si no existe
+        }));
+
+        res.json(mappedResults);
     });
 });
 
