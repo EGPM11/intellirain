@@ -43,7 +43,7 @@ const plants = [
 
 // Ruta para servir el HTML
 router.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "plantas.html"));
+    res.sendFile(path.join(__dirname, "plantas.php"));
 });
 
 // Ruta para devolver datos de plantas desde la base de datos

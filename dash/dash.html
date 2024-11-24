@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <!-- CSS Stylesheets -->
-    <link rel="stylesheet" href="/nav.css">
+    <link rel="stylesheet" href="../public/nav.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -14,9 +14,9 @@
 <body>
     <!-- Sidebar navigation -->
     <div class="sidebar">
-        <div class="sidebar-icon" onclick="window.location.href='/dash'">🏠</div>
-        <div class="sidebar-icon" onclick="window.location.href='/dash'">📊</div>
-        <div class="sidebar-icon" onclick="window.location.href='/plantas'">🌱</div>
+        <div class="sidebar-icon" onclick="window.location.href='./dash.html'">🏠</div>
+        <div class="sidebar-icon" onclick="window.location.href='./dash.html'">📊</div>
+        <div class="sidebar-icon" onclick="window.location.href='../plantas/plantas.php'">🌱</div>
         <div class="sidebar-icon" onclick="toggleDarkMode()">🌙</div>
     </div>
 
@@ -49,7 +49,7 @@
     </div>
 
 
-    <script type="module" src="dash.js"></script>
-    <script src="/darkmode.js"></script>
+    <script type="module" src="./dash.js"></script>
+    <script src="../public/darkmode.js"></script>
 </body>
 </html>

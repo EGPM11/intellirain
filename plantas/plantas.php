@@ -9,9 +9,9 @@
 </head>
 <body>
     <div class="sidebar">
-        <div class="sidebar-icon" onclick="window.location.href='/dash'">🏠</div>
-        <div class="sidebar-icon" onclick="window.location.href='/dash'">📊</div>
-        <div class="sidebar-icon" onclick="window.location.href='/plantas'">🌱</div>
+        <div class="sidebar-icon" onclick="window.location.href='../dash/dash.html'">🏠</div>
+        <div class="sidebar-icon" onclick="window.location.href='../dash/dash.html'">📊</div>
+        <div class="sidebar-icon" onclick="window.location.href='plantas.php'">🌱</div>
         <div class="sidebar-icon" onclick="toggleDarkMode()">🌙</div>
     </div>
     <div class="main-content">
@@ -52,9 +52,29 @@
 
         </div>
     </div>
-    <script src="/darkmode.js"></script>
+    <script src="../public/darkmode.js"></script>
     <script src="./plantas.js"></script>
     
     <!--Prueba de ltarjetas -->
+
+    <?php
+    // Datos de conexión
+    $host = "localhost";
+    $usuario = "root";
+    $contrasena = "Martinez2709";
+    $base_datos = "plantasdb";
+
+    // Crear conexión
+    $conn = new mysqli($host, $usuario, $contrasena, $base_datos);
+
+    // Verificar conexión
+    if ($conn->connect_error) {
+        die("<p style='color: red;'>Error de conexión: " . $conn->connect_error . "</p>");
+    }
+    echo "<p style='color: green;'>Conexión exitosa a la base de datos.</p>";
+
+    // Cerrar conexión
+    $conn->close();
+    ?>
 </body>
 </html>
